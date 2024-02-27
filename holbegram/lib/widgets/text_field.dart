@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TextFieldInput extends StatefulWidget {
+class TextFieldInput extends StatelessWidget {
   final TextEditingController controller;
   final bool ispassword;
   final String hintText;
+  final Widget? suffixIcon;
   final TextInputType keyboardType;
 
   const TextFieldInput({
@@ -11,36 +12,18 @@ class TextFieldInput extends StatefulWidget {
     required this.controller,
     this.ispassword = false,
     required this.hintText,
+    this.suffixIcon,
     required this.keyboardType,
   });
 
   @override
-  TextFieldInputState createState() => TextFieldInputState();
-}
-
-class TextFieldInputState extends State<TextFieldInput> {
-  late bool _isHidden;
-
-  @override
-  void initState() {
-    super.initState();
-    _isHidden = widget.ispassword;
-  }
-
-  void _togglePasswordVisibility() {
-    setState(() {
-      _isHidden = !_isHidden;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return TextField(
-      keyboardType: widget.keyboardType,
-      controller: widget.controller,
+      keyboardType: keyboardType,
+      controller: controller,
       cursorColor: const Color.fromARGB(218, 226, 37, 24),
       decoration: InputDecoration(
-          hintText: widget.hintText,
+          hintText: hintText,
           border: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.transparent)),
           focusedBorder: const OutlineInputBorder(
@@ -49,16 +32,9 @@ class TextFieldInputState extends State<TextFieldInput> {
               borderSide: BorderSide(color: Colors.transparent)),
           filled: true,
           contentPadding: const EdgeInsets.all(8),
-          // Change suffixIcon to manage the visibility icon
-          suffixIcon: widget.ispassword
-              ? IconButton(
-                  icon:
-                      Icon(_isHidden ? Icons.visibility_off : Icons.visibility),
-                  onPressed: _togglePasswordVisibility,
-                )
-              : null),
+          suffixIcon: suffixIcon),
       textInputAction: TextInputAction.next,
-      obscureText: _isHidden,
+      obscureText: ispassword,
     );
   }
 }

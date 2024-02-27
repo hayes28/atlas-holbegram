@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:holbegram/firebase_options.dart';
 import 'package:holbegram/widgets/text_field.dart';
+import 'package:holbegram/screens/login_screen.dart';
 
 
 
@@ -40,7 +41,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: LoginScreen(
+          emailController: TextEditingController(),
+          passwordController: TextEditingController()),
     );
   }
 }
