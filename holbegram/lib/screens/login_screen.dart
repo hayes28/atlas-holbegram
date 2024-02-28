@@ -60,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         const Image(
-          image: AssetImage('assets/images/logo.webp'),
+          image: AssetImage('images/logo.webp'),
           width: 80,
           height: 60,
         ),
