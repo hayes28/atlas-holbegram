@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       ),
       home: LoginScreen(
           emailController: TextEditingController(),
-          passwordController: TextEditingController()),
+          passwordController: TextEditingController(), passwordVisible: true,),
     );
   }
 }

@@ -1,4 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:holbegram/screens/signup_screen.dart';
 import 'package:holbegram/widgets/text_field.dart';
 
 //ignore: must_be_immutable
@@ -11,7 +13,7 @@ class LoginScreen extends StatefulWidget {
     super.key,
     required this.emailController,
     required this.passwordController,
-    this.passwordVisible = true,
+    required this.passwordVisible,
   });
 
   get usernameController => null;
@@ -23,6 +25,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  get loadingBuilder => null;
+
   @override
   // Dispose only the TextEditingController arguments
   void dispose() {
@@ -185,41 +189,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                Row(
+              Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.network(
-                      'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png',
+                      Image.asset('images/google-logo.png',
                       width: 40,
                       height: 40,
-                      loadingBuilder: (BuildContext context, Widget child,
-                          ImageChunkEvent? loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Center(
-                          child: CircularProgressIndicator(
-                            value: loadingProgress.expectedTotalBytes != null
-                                ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes!
-                                : null,
-                          ),
-                        );
-                      },
-                      // errorBuilder: (BuildContext context, Object exception,
-                      //     StackTrace? stackTrace) {
-                      //   return const Text('Could not load logo ');
                     ),
-                    const Text('Sign In with Google')
-                  ],
-                )
+                const Text(" Sign in with Google"),
               ],
-            ))
+            )
           ],
-        )
-      )
-    );
+        ))
+      ],
+    )));
   }
-}
-
-SignUp({required TextEditingController emailController, required usernameController, required TextEditingController passwordController, required passwordConfirmController}) {
 }
